@@ -22,9 +22,6 @@ nav {
 
 img {
   width: 100%;
-  height: 100%;
-  max-height: 50vh;
-  padding: 20px;
 }
 
 p {
@@ -38,6 +35,8 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+
 
 ul {
   display: flex;
@@ -107,6 +106,7 @@ button:active {
 .nav__link:hover {
   text-decoration: underline;
 }
+
 .nav__link--primary {
   border: 2px solid #7342d6;
   border-radius: 4px;
@@ -119,7 +119,6 @@ button:active {
 .btn__menu {
   background-color: transparent;
   font-size: 40px;
-  text-align: center;
   border: none;
   color: #7342d6;
   display: none;
@@ -132,23 +131,25 @@ button:active {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 99;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  visibility: hidden;
   transition: all 300ms ease;
   opacity: 0;
-  visibility: hidden;
-}
-
-.menu--open .menu__backdrop {
-  visibility: visible;
-  opacity: 1;
+  transform: translate(100%);
 }
 
 .menu--open {
-max-width: 100vh;
-overflow-y: hidden;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.menu--open .menu__backdrop {
+  visibility: visible !important;
+  opacity: 1;
+  transform: translate(0);
 }
 
 .menu__links {
@@ -162,32 +163,31 @@ overflow-y: hidden;
 }
 
 .menu__link {
-  font-size: 40px;
   color: white;
+  font-size: 40px;
 }
 
 .btn__menu--close {
   position: absolute;
-  right: 20px;
   top: 10px;
+  right: 20px;
   padding: 8px;
   color: white;
 }
 
-/*
 
-landing
+/* 
+
+LANDING
 
 */
 
-
-
 #landing {
-  background-color: rgba(115, 66, 214, 0.1);
+  background-color: rgba(115, 66, 214, 0.1)
 }
 
 header {
-  height: calc(100vh-80px);
+  height: calc(100vh - 80px);
 }
 
 .header__container {
@@ -202,14 +202,16 @@ header {
 
 .header__description {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
 }
 
-
 .header__img--wrapper {
-  padding: 30px;
-  z-index: 2;
+  padding: 20px;
+
+  /* Added this after the tutorial to 
+  show it over the wave on larger screens */
+  z-index: 50;
 }
 
 .container {
@@ -218,7 +220,7 @@ header {
 
 .row {
   width: 100%;
-  max-width:1200px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -231,9 +233,9 @@ header {
 .no-cursor {
   cursor: not-allowed;
 }
-/*
+/* 
 
-HIghlights
+HIGHLIGHTS 
 
 */
 
@@ -242,28 +244,27 @@ HIghlights
   max-width: 100vw;
 }
 
-#highlights:before,
-#highlights:after {
+#highlights:after,
+#highlights:before {
   background: url('assets/wave.svg');
-content: "";
-position: absolute;
-width: 101vw;
-height: 12vw;
-left: 0;
-z-index: 1;
-background-size: cover;
-background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  width: 101vw;
+  height: 12vw;
+  left: 0;
+  z-index: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #highlights:before {
-
-transform: translateY(-100%);
-top: 1px;
+  transform: translateY(-100%);
+  top: 1px;
 }
 
 #highlights:after {
-transform: translateY(100%) rotate(180deg);
-bottom: 1px;
+  transform: translateY(100%) rotate(180deg);
+  bottom: 1px;
 }
 
 .highlight__wrapper {
@@ -285,7 +286,8 @@ bottom: 1px;
 }
 
 .highlight__img {
-  border: 2px solid #7342d6;
+  border: 2px solid #7342d65d;
+  color: #7342d6;
   width: 100px;
   height: 100px;
   display: flex;
@@ -302,15 +304,14 @@ bottom: 1px;
   text-align: center;
 }
 
-/*
+/* 
 
-Features 
+FEATURES 
 
 */
 
 #features {
   padding-top: 8vw;
-  height: 1000px;
   background-color: rgba(115, 66, 214, 0.1);
 }
 
@@ -322,12 +323,19 @@ Features
 .book {
   width: 25%;
   padding: 24px;
+  /* Added after tutorial to push all the books images down */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .book__img {
   max-height: 380px;
   transition: all 300ms ease;
   cursor: not-allowed;
+  /* Added after tutorial to maintain image aspect ratio */
+  object-fit: contain;
+  object-position: left;
 }
 
 .book__img--wrapper {
@@ -356,34 +364,29 @@ Features
   color: #fabf2a;
 }
 
-.book__price--normal{
+.book__price--normal {
   text-decoration: line-through;
   padding-right: 6px;
   color: #bfbfbf;
 }
 
-#recent {
-  padding-top: 200px;
-}
+/* 
 
-/*
-
-explore
+EXPLORE
 
 */
 
 #explore {
   background-color: rgba(115, 66, 214, 0.1);
-
 }
 
-/*
+/* 
 
-footer
+FOOTER
 
 */
 
-footer{
+footer {
   background-color: #242424;
 }
 
@@ -391,7 +394,7 @@ footer{
   display: flex;
 }
 
-.footer__logo--img{
+.footer__logo--img {
   width: 160px;
   filter: grayscale(1) invert(1);
 }
@@ -406,10 +409,83 @@ footer{
 }
 
 .footer__link {
-padding: 0 8px;
+  padding: 0 8px;
 }
 
+/* 
+**
 
+BOOKS PAGE
+
+**
+*/
+
+#books__body {
+  background-color: rgba(115, 66, 214, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#books__main {
+  flex: 1;
+}
+
+.books__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.books__header--title {
+  margin-bottom: 0;
+}
+
+select {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #dcdfe6;
+  color: #606266;
+  height: 40px;
+  line-height: 40px;
+  outline: none;
+  padding: 0 16px;
+  width: 100%;
+  max-width: 200px;
+}
+
+.books__loading {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px;
+  font-size: 60px;
+  color: #7342d6;
+}
+
+.books__loading--spinner {
+  display: none !important;
+}
+
+.books__loading .books__loading--spinner {
+  display: block !important;
+}
+
+.fa-spinner {
+  animation: rotate 600ms infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 /* SMALL PHONES, TABLETS, LARGE SMARTPHONES */
 @media (max-width: 768px) {
@@ -453,6 +529,3 @@ padding: 0 8px;
     margin-bottom: 24px;
   }
 }
-
-
-/* left off 39 min */
