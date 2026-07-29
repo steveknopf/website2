@@ -3,7 +3,7 @@ let books;
 async function renderBooks(filter) {
   const booksWrapper = document.querySelector(".books");
 
-  booksWrapper.classList += ' books__loading'
+classList.add("books__loading")
 
   if (!books) {
     books = await getBooks();
